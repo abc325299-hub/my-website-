@@ -47,11 +47,20 @@
       color: #2563eb;
     }
 
-    input, button {
+    input, button, textarea {
       padding: 10px;
       margin: 5px 0;
       border-radius: 6px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    input {
+      width: 95%;
+    }
+
+    textarea {
+      width: 95%;
     }
 
     button {
@@ -59,10 +68,16 @@
       color: white;
       border: none;
       cursor: pointer;
+      padding: 11px 18px;
     }
 
     button:hover {
       background: #1d4ed8;
+    }
+
+    .result {
+      font-weight: bold;
+      color: #15803d;
     }
 
     footer {
@@ -79,88 +94,56 @@
 
   <header>
     <h1>Free Online Tools & Tips</h1>
-    <p>Useful tools and helpful online earning tips</p>
+    <p>Useful free tools and helpful online tips</p>
   </header>
 
   <div class="container">
 
+    <!-- Percentage Calculator -->
     <div class="card">
       <h2>Percentage Calculator</h2>
+
       <input type="number" id="number" placeholder="Enter number">
       <input type="number" id="percent" placeholder="Enter percentage">
+
       <br>
       <button onclick="calculatePercentage()">Calculate</button>
-      <p id="percentageResult"></p>
+
+      <p id="percentageResult" class="result"></p>
     </div>
 
+
+    <!-- Age Calculator -->
     <div class="card">
       <h2>Age Calculator</h2>
+
       <input type="date" id="birthDate">
+
       <br>
       <button onclick="calculateAge()">Calculate Age</button>
-      <p id="ageResult"></p>
+
+      <p id="ageResult" class="result"></p>
     </div>
 
+
+    <!-- Word Counter -->
     <div class="card">
       <h2>Word Counter</h2>
-      <textarea id="textInput" rows="5" style="width:95%; padding:10px;"
+
+      <textarea id="textInput" rows="5"
         placeholder="Write or paste your text here"></textarea>
+
       <br>
       <button onclick="countWords()">Count Words</button>
-      <p id="wordResult"></p>
+
+      <p id="wordResult" class="result"></p>
     </div>
 
+
+    <!-- Unit Converter -->
     <div class="card">
-      <h2>Online Earning Tips</h2>
-      <p>Learn about free online work, websites, freelancing and other useful earning methods.</p>
-      <p>Always research a platform before sharing personal information or investing money.</p>
-    </div>
+      <h2>Unit Converter</h2>
 
-  </div>
+      <input type="number" id="kmInput" placeholder="Enter kilometers">
 
-  <footer>
-    © 2026 Free Online Tools & Tips
-  </footer>
-
-  <script>
-    function calculatePercentage() {
-      let number = document.getElementById("number").value;
-      let percent = document.getElementById("percent").value;
-
-      let result = (number * percent) / 100;
-
-      document.getElementById("percentageResult").innerText =
-        "Result: " + result;
-    }
-
-    function calculateAge() {
-      let birthDate = new Date(document.getElementById("birthDate").value);
-      let today = new Date();
-
-      let age = today.getFullYear() - birthDate.getFullYear();
-
-      let month = today.getMonth() - birthDate.getMonth();
-
-      if (
-        month < 0 ||
-        (month === 0 && today.getDate() < birthDate.getDate())
-      ) {
-        age--;
-      }
-
-      document.getElementById("ageResult").innerText =
-        "Your age is: " + age + " years";
-    }
-
-    function countWords() {
-      let text = document.getElementById("textInput").value.trim();
-
-      let words = text === "" ? 0 : text.split(/\s+/).length;
-
-      document.getElementById("wordResult").innerText =
-        "Word count: " + words;
-    }
-  </script>
-
-</body>
-</html>
+      <br>
