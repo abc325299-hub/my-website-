@@ -1,33 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Online Tools & Tips</title>
+
   <style>
     body {
-      font-family: Arial;
-      text-align: center;
-      padding: 50px;
-      background: #f2f2f2;
-    }
-    h1 {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f7fb;
       color: #222;
     }
-    p {
-      font-size: 18px;
+
+    header {
+      background: #2563eb;
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
     }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 25px auto;
+      padding: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #2563eb;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
     button {
-      padding: 12px 25px;
-      font-size: 16px;
+      background: #2563eb;
+      color: white;
       border: none;
-      border-radius: 8px;
       cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    footer {
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 20px;
+      margin-top: 30px;
     }
   </style>
 </head>
 
 <body>
-  <h1>Welcome to My Website</h1>
-  <p>Useful information and interesting content coming soon!</p>
-  <button>Explore</button>
+
+  <header>
+    <h1>Free Online Tools & Tips</h1>
+    <p>Useful tools and helpful online earning tips</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>Percentage Calculator</h2>
+      <input type="number" id="number" placeholder="Enter number">
+      <input type="number" id="percent" placeholder="Enter percentage">
+      <br>
+      <button onclick="calculatePercentage()">Calculate</button>
+      <p id="percentageResult"></p>
+    </div>
+
+    <div class="card">
+      <h2>Age Calculator</h2>
+      <input type="date" id="birthDate">
+      <br>
+      <button onclick="calculateAge()">Calculate Age</button>
+      <p id="ageResult"></p>
+    </div>
+
+    <div class="card">
+      <h2>Word Counter</h2>
+      <textarea id="textInput" rows="5" style="width:95%; padding:10px;"
+        placeholder="Write or paste your text here"></textarea>
+      <br>
+      <button onclick="countWords()">Count Words</button>
+      <p id="wordResult"></p>
+    </div>
+
+    <div class="card">
+      <h2>Online Earning Tips</h2>
+      <p>Learn about free online work, websites, freelancing and other useful earning methods.</p>
+      <p>Always research a platform before sharing personal information or investing money.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Free Online Tools & Tips
+  </footer>
+
+  <script>
+    function calculatePercentage() {
+      let number = document.getElementById("number").value;
+      let percent = document.getElementById("percent").value;
+
+      let result = (number * percent) / 100;
+
+      document.getElementById("percentageResult").innerText =
+        "Result: " + result;
+    }
+
+    function calculateAge() {
+      let birthDate = new Date(document.getElementById("birthDate").value);
+      let today = new Date();
+
+      let age = today.getFullYear() - birthDate.getFullYear();
+
+      let month = today.getMonth() - birthDate.getMonth();
+
+      if (
+        month < 0 ||
+        (month === 0 && today.getDate() < birthDate.getDate())
+      ) {
+        age--;
+      }
+
+      document.getElementById("ageResult").innerText =
+        "Your age is: " + age + " years";
+    }
+
+    function countWords() {
+      let text = document.getElementById("textInput").value.trim();
+
+      let words = text === "" ? 0 : text.split(/\s+/).length;
+
+      document.getElementById("wordResult").innerText =
+        "Word count: " + words;
+    }
+  </script>
+
 </body>
 </html>
